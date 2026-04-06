@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FinLedger — dark blue canvas (replaces warm brown/beige) */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 40% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 40% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 158 52% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 35% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 35% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 158 52% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 6 57% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 146 61% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 32 72% 45%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 217 33% 24%;
+    --input: 217 33% 24%;
+    --ring: 158 52% 42%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 222 52% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 158 52% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 40% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 20%;
+    --sidebar-ring: 158 52% 42%;
+    --sidebar-muted: 215 20% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Sora", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .font-mono-ledger {
+    font-family: "DM Mono", ui-monospace, monospace;
+  }
+}
+
+@layer components {
+  .page-shell-header {
+    @apply sticky top-0 z-40 bg-background pb-0 pt-6 px-6 md:px-8;
+  }
+
+  .page-shell-body {
+    @apply flex-1 px-6 pb-12 pt-6 md:px-8;
+  }
+
+  .auth-form-label {
+    @apply mb-1.5 block text-[12px] font-medium uppercase tracking-wide text-muted-foreground;
+  }
+
+  .ledger-kpi-label {
+    @apply mb-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground;
+  }
+
+  .ledger-filters-bar {
+    @apply mb-4 flex flex-wrap items-center gap-2 border-b border-border pb-4;
+  }
+
+  .ledger-section-header {
+    @apply mb-4 flex items-center justify-between;
+  }
+
+  .ledger-badge-income {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(146 61% 26% / 0.12);
+    color: hsl(146 61% 26%);
+  }
+
+  .ledger-badge-expense {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(6 57% 46% / 0.1);
+    color: hsl(6 57% 46%);
+  }
+
+  .ledger-badge-admin {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(258 45% 28% / 0.45);
+    color: hsl(258 65% 82%);
+  }
+
+  .ledger-badge-analyst {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(32 72% 45% / 0.2);
+    color: hsl(38 85% 72%);
+  }
+
+  .ledger-badge-viewer {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(222 35% 22%);
+    color: hsl(215 20% 65%);
+  }
+
+  .ledger-badge-active {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(146 61% 26% / 0.12);
+    color: hsl(146 61% 26%);
+  }
+
+  .ledger-badge-inactive {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium;
+    background: hsl(222 35% 22%);
+    color: hsl(215 15% 50%);
+  }
+
+  .ledger-avatar {
+    @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[12px] font-semibold text-white;
+  }
+
+  .ledger-avatar-green {
+    background: hsl(var(--primary));
+  }
+
+  .ledger-avatar-blue {
+    background: #185fa5;
+  }
+
+  .ledger-avatar-purple {
+    background: #5b3fd1;
+  }
+
+  .ledger-avatar-orange {
+    background: #b8680a;
+  }
+}
