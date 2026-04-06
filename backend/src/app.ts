@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
 import { authRouter } from "./modules/auth/auth.routes.js";
 import { usersRouter } from "./modules/users/users.routes.js";
 import { recordsRouter } from "./modules/records/records.routes.js";
 import { dashboardRouter } from "./modules/dashboard/dashboard.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import { openApiSpec } from "./openapi/openapiSpec.js";
 
 export function createApp() {
   const app = express();
@@ -15,6 +17,11 @@ export function createApp() {
   app.get("/health", (_req, res) => {
     res.status(200).json({ success: true, data: { status: "ok" } });
   });
+
+  app.get("/openapi.json", (_req, res) => {
+    res.json(openApiSpec);
+  });
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openApiSpec));
 
   app.use("/auth", authRouter);
   app.use("/users", usersRouter);
