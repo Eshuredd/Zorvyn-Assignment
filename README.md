@@ -8,6 +8,7 @@ What you get:
 - Financial records (amount, income/expense, category, date, notes) with filters, pagination, and search.
 - Dashboard endpoints: totals, category breakdown, monthly trends, recent activity (exact rules vary by role—see below).
 - Zod on inputs, one error handler, JWT on protected routes.
+- OpenAPI 3 + Swagger UI on the API (`/api-docs`, `/openapi.json` — see [`backend/README.md`](backend/README.md)).
 
 Stack: Node 18+, Express, Prisma, SQLite, Zod. Frontend: React, Tailwind, shadcn-style components.
 
@@ -32,4 +33,4 @@ npm install
 npm run dev
 ```
 
-Set `VITE_API_BASE_URL` if your API isn’t on the default the app expects. Full route list, env table, seeded logins, and curl examples live in [`backend/README.md`](backend/README.md).
+Set `VITE_API_BASE_URL` if your API isn’t on the default the app expects. Full route list, Swagger/OpenAPI URLs, env table, seeded logins, and curl examples live in [`backend/README.md`](backend/README.md).

@@ -86,6 +86,15 @@ Almost everything needs `Authorization: Bearer <token>`. Exceptions: `POST /auth
 
 **Health:** `GET /health`, no token.
 
+## API docs (Swagger)
+
+OpenAPI 3 and Swagger UI are served by the same process. The spec is maintained in `src/openapi/openapiSpec.ts` (kept in line with the Zod schemas and routes).
+
+- **Swagger UI:** `GET /api-docs` — e.g. `http://localhost:4000/api-docs` when running locally.
+- **OpenAPI JSON:** `GET /openapi.json` — for tools or a public “documentation URL” when deployed.
+
+No auth required to view the docs. To use **Try it out** on protected routes, call `POST /auth/login`, copy the `token`, then use **Authorize** with a Bearer token (or paste the raw JWT, depending on the UI).
+
 ### Permissions in one place
 
 Admins can do everything including user management and record writes. Analysts and viewers can read records; only admins mutate them. Viewers only get the lighter dashboard endpoints (summary + recent activity)—category breakdown and trends need analyst or admin so “insights” aren’t exposed to pure read-only users.
@@ -129,4 +138,4 @@ Viewer vs analyst split on the dashboard is intentional—viewers aren’t suppo
 
 SQLite is fine for local dev and awkward for serious concurrency or big reporting. JWT in a header is simple; no cookie CSRF discussion. Trends fetch rows and aggregate in application code—works until the dataset gets huge, then you’d lean on SQL or pre-aggregates. Every authenticated request loads the user from the DB so deactivated accounts lose access immediately; that’s an extra query each time.
 
-Stuff that didn’t get built: refresh tokens, password flows, audit trail, Supertest E2E, generated OpenAPI, rate limiting, structured logging, Postgres for a real deploy.
+Stuff that didn’t get built: refresh tokens, password flows, audit trail, Supertest E2E, auto-generated OpenAPI from Zod (spec is hand-written), rate limiting, structured logging, Postgres for a real deploy.
